@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andhika Aidan Gibran — Portfolio</title>
+<meta name="description" content="Multi-disciplinary portfolio spanning social media, operations, partnership marketing, video editing, videography and UI/UX design.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bgPrimary: '#0B0C10',
+          bgSecondary: '#1F2833',
+          teal: '#45A29E',
+          purple: '#8A2BE2',
+          ink: '#FFFFFF',
+          silver: '#C5C6C7',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['"Inter"', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  :root{
+    --teal: #45A29E;
+    --purple: #8A2BE2;
+  }
+  *{ scroll-behavior: smooth; }
+  body{
+    background: #0B0C10;
+    color: #C5C6C7;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, .font-display{ font-family: 'Space Grotesk', sans-serif; }
+  .font-mono{ font-family: 'JetBrains Mono', monospace; }
+
+  /* ---------- Scrollbars ---------- */
+  ::-webkit-scrollbar{ height: 6px; width: 8px; }
+  ::-webkit-scrollbar-track{ background: transparent; }
+  ::-webkit-scrollbar-thumb{ background: #1F2833; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover{ background: #45A29E55; }
+
+  /* ---------- Focus ---------- */
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
+    outline: 2px solid #45A29E;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ---------- Glass ---------- */
+  .glass{
+    background: rgba(31, 40, 51, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(197, 198, 199, 0.08);
+  }
+  .glass-light{
+    background: rgba(31, 40, 51, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(197, 198, 199, 0.06);
+  }
+
+  /* ---------- Card hover lift ---------- */
+  .lift{ transition: transform .3s ease-in-out, box-shadow .3s ease-in-out, border-color .3s ease-in-out; }
+  .lift:hover{ transform: translateY(-4px); }
+
+  /* ---------- Gradient text ---------- */
+  .grad-text{
+    background: linear-gradient(90deg, #45A29E, #8A2BE2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ---------- Ambient blobs ---------- */
+  .blob{
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.28;
+    pointer-events: none;
+    will-change: transform;
+  }
+  @keyframes floatA{
+    0%,100%{ transform: translate(0,0) scale(1); }
+    50%{ transform: translate(40px,-30px) scale(1.08); }
+  }
+  @keyframes floatB{
+    0%,100%{ transform: translate(0,0) scale(1); }
+    50%{ transform: translate(-50px,40px) scale(1.05); }
+  }
+  .blob-1{ animation: floatA 18s ease-in-out infinite; }
+  .blob-2{ animation: floatB 22s ease-in-out infinite; }
+
+  /* ---------- Nav buttons ---------- */
+  .nav-btn{
+    position: relative;
+    transition: color .3s ease-in-out, background-color .3s ease-in-out;
+  }
+  .nav-btn::after{
+    content: '';
+    position: absolute;
+    left: 14px;
+    right: 14px; bottom: 6px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--teal), var(--purple));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s ease-in-out;
+  }
+  .nav-btn:hover::after{ transform: scaleX(1); }
+  .nav-btn.active{
+    color: #fff;
+    background: rgba(255,255,255,0.04);
+  }
+  .nav-btn.active::after{ transform: scaleX(1); }
+
+  /* ---------- Tab panels ---------- */
+  .tab-panel{ display: none; }
+  .tab-panel.active{ display: block; }
+  @keyframes fadeInUp{
+    from{ opacity: 0; transform: translateY(14px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+  .tab-panel.active{ animation: fadeInUp .45s ease-in-out; }
+
+  /* ---------- Typewriter caret ---------- */
+  .caret{
+    display: inline-block;
+    width: 2px;
+    margin-left: 2px;
+    background: #45A29E;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity: 0; } }
+
+  /* ---------- Progress bar ---------- */
+  .progress-fill{
+    width: 0%;
+    transition: width 1.1s cubic-bezier(.16,1,.3,1);
+  }
+
+  /* ---------- Misc ---------- */
+  .tag-pill{
+    border: 1px solid rgba(197,198,199,0.15);
+    transition: border-color .3s ease-in-out, color .3s ease-in-out, background-color .3s ease-in-out;
+  }
+  .tag-pill:hover{ border-color: #45A29E; color: #fff; }
+
+  .grid-tile{ aspect-ratio: 1 / 1; }
+
+  .play-icon{ transition: transform .3s ease-in-out, opacity .3s ease-in-out; }
+  .video-card:hover .play-icon{ transform: scale(1.15); }
+  .video-card:hover .thumb-zoom{ transform: scale(1.06); }
+  .thumb-zoom{ transition: transform .5s ease-in-out; }
+
+  .lightbox-bg{ background: rgba(11,12,16,0.92); backdrop-filter: blur(6px); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+
+<body class="bg-bgPrimary text-silver font-body overflow-x-hidden">
+
+<div class="fixed inset-0 -z-10 overflow-hidden">
+  <div class="blob blob-1 w-[28rem] h-[28rem] bg-teal -top-32 -left-20"></div>
+  <div class="blob blob-2 w-[32rem] h-[32rem] bg-purple top-1/3 -right-32"></div>
+  <div class="blob blob-1 w-[24rem] h-[24rem] bg-purple bottom-0 left-1/4" style="animation-delay:-6s;"></div>
+</div>
+
+<header class="sticky top-0 z-40">
+  <div class="glass border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#top" class="font-display font-semibold text-lg tracking-tight text-white shrink-0">
+          Andhika<span class="grad-text">.</span>Aidan 
+        </a>
+        <a href="#contact" class="hidden md:inline-flex items-center gap-2 text-xs font-mono tag-pill rounded-full px-4 py-2 text-silver">
+          <span class="w-1.5 h-1.5 rounded-full bg-teal"></span> Available for work
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <nav aria-label="Portfolio disciplines" class="glass-light border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-2 md:px-6">
+      <div id="navRow" class="flex md:grid md:grid-cols-6 overflow-x-auto no-scrollbar gap-1 py-2 md:py-0" style="-ms-overflow-style:none; scrollbar-width:none;">
+        <button data-tab="sm" class="nav-btn active flex items-center gap-2 whitespace-nowrap shrink-0 rounded-lg px-4 py-3 text-sm text-silver hover:text-white">
+          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-teal/15 text-teal">SM</span>
+          Social Media
+        </button>
+        <button data-tab="to" class="nav-btn flex items-center gap-2 whitespace-nowrap shrink-0 rounded-lg px-4 py-3 text-sm text-silver hover:text-white">
+          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-purple/15 text-purple">TO</span>
+          Traffic & Operation
+        </button>
+        <button data-tab="pp" class="nav-btn flex items-center gap-2 whitespace-nowrap shrink-0 rounded-lg px-4 py-3 text-sm text-silver hover:text-white">
+          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-teal/15 text-teal">PP</span>
+          Partnership Marketing
+        </button>
+        <button data-tab="ve" class="nav-btn flex items-center gap-2 whitespace-nowrap shrink-0 rounded-lg px-4 py-3 text-sm text-silver hover:text-white">
+          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-purple/15 text-purple">VE</span>
+          Video Editor
+        </button>
+        <button data-tab="vg" class="nav-btn flex items-center gap-2 whitespace-nowrap shrink-0 rounded-lg px-4 py-3 text-sm text-silver hover:text-white">
+          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-teal/15 text-teal">VG</span>
+          Videographer
+        </button>
+        <button data-tab="ux" class="nav-btn flex items-center gap-2 whitespace-nowrap shrink-0 rounded-lg px-4 py-3 text-sm text-silver hover:text-white">
+          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-purple/15 text-purple">UX</span>
+          UI/UX Designer
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section id="top" class="max-w-7xl mx-auto px-5 md:px-8 pt-16 pb-12 md:pt-24 md:pb-16">
+  <p class="font-mono text-xs text-teal tracking-widest mb-5">PORTFOLIO — 2026</p>
+  <h1 class="font-display font-semibold text-white text-4xl sm:text-5xl md:text-7xl leading-[1.05] max-w-4xl">
+    SanzKirizKa Ninjago.<br>
+    <span class="grad-text">Andhika Aidan Gibran.</span>
+  </h1>
+  <p class="font-mono text-sm md:text-base text-silver mt-6">
+    Currently in focus: <span id="typewriter" class="text-white"></span><span class="caret">&nbsp;</span>
+  </p>
+  <p class="text-silver/90 max-w-xl mt-6 leading-relaxed">
+    I move between data, design, and storytelling — building campaigns, systems, and screens
+    that work as hard as they look good. This site is organized by discipline; pick one above
+    to see the work.
+  </p>
+  <div class="flex flex-wrap gap-3 mt-8">
+    <a href="#workspace" class="rounded-full bg-gradient-to-r from-teal to-purple px-6 py-3 text-sm font-medium text-white shadow-[0_0_30px_rgba(138,43,226,0.25)] hover:shadow-[0_0_45px_rgba(138,43,226,0.45)] transition-all duration-300 ease-in-out">
+      Explore the work
+    </a>
+    <a href="#contact" class="rounded-full glass px-6 py-3 text-sm font-medium text-silver hover:text-white hover:border-teal/40 transition-all duration-300 ease-in-out">
+      Get in touch
+    </a>
+  </div>
+</section>
+
+<main id="workspace" class="max-w-7xl mx-auto px-5 md:px-8 pb-24">
+
+<section id="panel-sm" class="tab-panel active">
+  <header class="mb-10">
+    <p class="font-mono text-xs text-teal mb-2">01 — SM</p>
+    <h2 class="font-display text-3xl md:text-4xl font-semibold text-white">Social Media</h2>
+    <p class="text-silver/80 mt-2 max-w-xl">Audience engagement, new media theory, and community building.</p>
+    <div class="flex flex-wrap gap-2 mt-5">
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Community Building</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Platform Strategy</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Content Calendars</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Trend Analysis</span>
+    </div>
+  </header>
+
+  <div class="mt-8 border-t border-silver/10 pt-6">
+  <h4 class="font-display text-sm font-medium text-ink mb-4">Instagram Analytics Snapshot (Last 30 Days)</h4>
+  
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Total Views</h5>
+      <span class="text-2xl font-bold text-white">7.7K+</span>
+      <p class="text-slate-500 text-[10px] mt-1">Across Reels & Stories</p>
+    </div>
+
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Total Followers</h5>
+      <span class="text-2xl font-bold text-white">800+</span>
+      <p class="text-slate-500 text-[10px] mt-1">Organic community growth</p>
+    </div>
+
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Interactions</h5>
+      <span class="text-2xl font-bold text-white">180+</span>
+      <p class="text-slate-500 text-[10px] mt-1">Likes, shares, and replies</p>
+    </div>
+
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Top Format</h5>
+      <span class="text-2xl font-bold text-white">Reels</span>
+      <p class="text-slate-500 text-[10px] mt-1">90.1% interaction rate</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="mt-8 border-t border-silver/10 pt-6">
+  <h4 class="font-display text-sm font-medium text-ink mb-4">YouTube Analytics Snapshot (Last 28 Days)</h4>
+  
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Total Views</h5>
+      <span class="text-2xl font-bold text-white">36.7K+</span>
+      <p class="text-slate-500 text-[10px] mt-1">Strong surge in viewership</p>
+    </div>
+
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Watch Time</h5>
+      <span class="text-2xl font-bold text-white">252.2</span>
+      <p class="text-slate-500 text-[10px] mt-1">Hours streamed/watched</p>
+    </div>
+
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Subscribers</h5>
+      <span class="text-2xl font-bold text-white">115+</span>
+      <p class="text-slate-500 text-[10px] mt-1">161% increase vs prior month</p>
+    </div>
+
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Monthly Audience</h5>
+      <span class="text-2xl font-bold text-white">18.1K</span>
+      <p class="text-slate-500 text-[10px] mt-1">Unique viewers reached</p>
+    </div>
+
+  </div>
+</div>
+  
+<div class="mt-8 border-t border-silver/10 pt-6">
+  <h3 class="font-display text-lg font-semibold text-white mb-6">Social Media Projects & Tracker</h3>
+<p class="text-slate-400 text-sm mb-6">
+    Here is a transparent view of the personal Google Sheet content plan I use to manage, organize, and track my content progress consistently.
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    
+    <div class="rounded-2xl border border-silver/20 bg-[#1a2230] p-6 flex flex-col items-center text-center shadow-lg">
+      <div class="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-red-500/10 text-red-500">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.051 1.999h.089c.822.003 1.987.03 2.8.072.728.037 1.093.052 1.298.084.288.044.48.03.563.02.435-.056.954-.116 1.342-.184.213-.037.44-.099.634-.182l-.01.02c.165-.077.295-.16.393-.248.096-.088.167-.18.21-.267.045-.098.076-.208.096-.328.021-.12.028-.27.032-.428.005-.183.006-.296.007-.492v-.054c-.001-.196-.002-.309-.007-.492-.004-.157-.011-.307-.032-.428-.02-.12-.051-.23-.096-.328-.043-.087-.114-.179-.21-.267-.098-.088-.228-.17-.393-.248l-.01-.02c-.194-.083-.421-.145-.634-.182-.388-.068-.907-.128-1.342-.184-.083-.01-.275-.024-.563-.02-.205.032-.57.047-1.298.084-.813.041-1.978.068-2.8.072h-.082c-.815.004-1.98.03-2.799.072-.728.037-1.093.052-1.298.084-.288.044-.48.03-.563.02-.435-.056-.954-.116-1.342-.184-.213-.037-.44-.099-.634-.182l-.01.02c-.165.077-.295.16-.393.248-.096.088-.167.18-.21.267-.045.098-.076.208-.096.328-.021.12-.028.27-.032.428-.005.183-.006.296-.007.492v.054c.001.196.002.309.007.492.004.157.011.307.032.428.02.12.051.23.096.328.043.087.114.179.21.267.098.088.228.17.393.248l.01.02c.194.083.421.145.634.182.388.068.907.128 1.342.184.083.01.275.024.563.02.205-.032.57-.047 1.298-.084.813-.041 1.978-.068 2.8-.072z"/>
+          <path d="m6.026 5.969v4.061l4.032-2.03z"/>
+        </svg>
+      </div>
+      <h4 class="text-white font-semibold text-base mb-1">YouTube Documentation</h4>
+      <p class="text-slate-400 text-xs mb-4">Personal channel documentation & video projects</p>
+      <a href="https://www.youtube.com/@AndhikaStorm1192" target="_blank" class="mt-auto px-4 py-2 bg-white/5 border border-silver/10 rounded-xl text-xs text-white hover:bg-white/10 transition-all">
+        Visit Channel →
+      </a>
+    </div>
+
+    <div class="rounded-2xl border border-silver/20 bg-[#1a2230] p-6 flex flex-col items-center text-center shadow-lg">
+      <div class="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-pink-500/10 text-pink-500">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.088 3.85.048 4.703.01 5.556 0 5.829 0 8c0 2.171.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.718 1.417.923.51.198 1.092.333 1.942.372C5.556 15.99 5.829 16 8 16s2.444-.01 3.297-.048c.852-.04 1.433-.174 1.942-.372.526-.205.972-.478 1.417-.923.445-.444.718-.89.923-1.417.198-.51.333-1.092.372-1.942C15.99 10.444 16 10.171 16 8c0-2.171-.01-2.444-.048-3.297-.04-.852-.174-1.433-.372-1.942-.205-.526-.478-.972-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.942-.372C10.444.01 10.171 0 8 0zm2.2 1.6h3.4a.6.6 0 0 1 .6.6v3.4a.6.6 0 0 1-.6.6h-3.4a.6.6 0 0 1-.6-.6V2.2a.6.6 0 0 1 .6-.6zm1.384 5.019a3.2 3.2 0 1 1-1.676-1.676 3.2 3.2 0 0 1 1.676 1.676zm-1.232-3.05a1.6 1.6 0 1 0 .694.694l.01-.01a1.6 1.6 0 0 0-.704-.684z"/>
+        </svg>
+      </div>
+      <h4 class="text-white font-semibold text-base mb-1">Instagram Documentation</h4>
+      <p class="text-slate-400 text-xs mb-4">Personal account documentation & content highlights</p>
+      <a href="https://www.instagram.com/andhika_ninjago/" target="_blank" class="mt-auto px-4 py-2 bg-white/5 border border-silver/10 rounded-xl text-xs text-white hover:bg-white/10 transition-all">
+        Visit Profile →
+      </a>
+    </div>
+
+  </div>
+
+  <div class="rounded-2xl border border-silver/20 bg-[#1a2230] p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-lg">
+    <div>
+     <h4 class="font-display text-base font-semibold text-white mb-1">Live Content Plan & Tracker</h4>
+      <p class="text-slate-400 text-xs">
+        A transparent view of the personal content plan I use to manage and track my regular content progress.
+      </p>
+    </div>
+    
+    <a href="https://docs.google.com/spreadsheets/d/1P58R0GAEQ7KEIxcS_5YwxMftqnfTvX9d8LehRcTcKvg/edit?usp=sharing" target="_blank" class="shrink-0 px-5 py-3 bg-white/5 border border-silver/10 rounded-xl text-sm font-medium text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+        <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+      </svg>
+      View Sheet
+</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="panel-to" class="tab-panel">
+  <header class="mb-10">
+    <p class="font-mono text-xs text-purple mb-2">02 — TO</p>
+    <h2 class="font-display text-3xl md:text-4xl font-semibold text-white">Traffic & Operation</h2>
+    <p class="text-silver/80 mt-2 max-w-xl">Data analytics, spreadsheets, workflow optimization, and database architecture.</p>
+    <div class="flex flex-wrap gap-2 mt-5">
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">SQL &amp; Spreadsheets</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Process Automation</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Inventory Systems</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Reporting Dashboards</span>
+    </div>
+  </header>
+
+  <h3 class="font-display text-xl text-white mb-5">Portfolio Projects — Data &amp; Statistics</h3>
+  <div class="grid md:grid-cols-3 gap-5 mb-14">
+    <article class="lift glass rounded-2xl p-5 border border-transparent hover:border-purple/40">
+      <div class="flex items-end gap-1.5 h-16 mb-4">
+        <div class="w-3 rounded-t bg-purple/40" style="height:35%"></div>
+        <div class="w-3 rounded-t bg-purple/60" style="height:55%"></div>
+        <div class="w-3 rounded-t bg-purple" style="height:90%"></div>
+        <div class="w-3 rounded-t bg-purple/50" style="height:65%"></div>
+        <div class="w-3 rounded-t bg-purple/30" style="height:25%"></div>
+      </div>
+      <h4 class="text-white font-medium text-sm">Churn Risk Scoring Model</h4>
+      <p class="text-xs text-silver/70 mt-2 leading-relaxed">Logistic regression model flagging at-risk accounts 21 days before churn, improving retention outreach timing.</p>
+      <p class="text-[11px] font-mono text-purple/70 mt-3">Tools: Python · Pandas · scikit-learn</p>
+    </article>
+    <article class="lift glass rounded-2xl p-5 border border-transparent hover:border-purple/40">
+      <div class="flex items-end gap-1.5 h-16 mb-4">
+        <div class="w-3 rounded-t bg-teal/30" style="height:45%"></div>
+        <div class="w-3 rounded-t bg-teal/50" style="height:30%"></div>
+        <div class="w-3 rounded-t bg-teal" style="height:80%"></div>
+        <div class="w-3 rounded-t bg-teal/70" style="height:95%"></div>
+        <div class="w-3 rounded-t bg-teal/40" style="height:60%"></div>
+      </div>
+      <h4 class="text-white font-medium text-sm">Weekly Demand Forecasting</h4>
+      <p class="text-xs text-silver/70 mt-2 leading-relaxed">Rolling forecast model for weekly demand, cutting overstock by 18% across three SKU categories.</p>
+      <p class="text-[11px] font-mono text-teal/70 mt-3">Tools: Excel · Power Query · DAX</p>
+    </article>
+    <article class="lift glass rounded-2xl p-5 border border-transparent hover:border-purple/40">
+      <div class="flex items-end gap-1.5 h-16 mb-4">
+        <div class="w-3 rounded-t bg-purple/40" style="height:70%"></div>
+        <div class="w-3 rounded-t bg-teal/50" style="height:40%"></div>
+        <div class="w-3 rounded-t bg-purple/60" style="height:60%"></div>
+        <div class="w-3 rounded-t bg-teal/70" style="height:85%"></div>
+        <div class="w-3 rounded-t bg-purple" style="height:50%"></div>
+      </div>
+      <h4 class="text-white font-medium text-sm">Regional Sales Variance Report</h4>
+      <p class="text-xs text-silver/70 mt-2 leading-relaxed">Automated variance reporting across five regions, surfacing anomalies for the ops team weekly.</p>
+      <p class="text-[11px] font-mono text-purple/70 mt-3">Tools: SQL · Looker Studio</p>
+    </article>
+  </div>
+
+  <h3 class="font-display text-xl text-white mb-5">Custom Database Systems</h3>
+  <div class="glass rounded-2xl overflow-hidden mb-14 border border-white/5">
+    <div class="px-5 py-3 border-b border-white/5 flex items-center justify-between">
+      <p class="font-mono text-xs text-silver/70">inventory_tracking.db</p>
+      <span class="w-2 h-2 rounded-full bg-teal"></span>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-xs md:text-sm">
+        <thead>
+          <tr class="font-mono text-[11px] text-silver/50 border-b border-white/5">
+            <th class="px-5 py-3 font-normal">ID</th>
+            <th class="px-5 py-3 font-normal">Item</th>
+            <th class="px-5 py-3 font-normal">Qty</th>
+            <th class="px-5 py-3 font-normal">Status</th>
+            <th class="px-5 py-3 font-normal">Last Updated</th>
+          </tr>
+        </thead>
+        <tbody class="font-mono text-silver/80">
+          <tr class="border-b border-white/5 hover:bg-white/[0.03] transition-colors duration-300 ease-in-out">
+            <td class="px-5 py-3">INV-0124</td><td class="px-5 py-3">Shipping Labels</td><td class="px-5 py-3">1,204</td>
+            <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full bg-teal/15 text-teal text-[11px]">In Stock</span></td>
+            <td class="px-5 py-3 text-silver/50">2 hrs ago</td>
+          </tr>
+          <tr class="border-b border-white/5 hover:bg-white/[0.03] transition-colors duration-300 ease-in-out">
+            <td class="px-5 py-3">INV-0125</td><td class="px-5 py-3">Packaging Box — M</td><td class="px-5 py-3">86</td>
+            <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full bg-yellow-500/15 text-yellow-400 text-[11px]">Low</span></td>
+            <td class="px-5 py-3 text-silver/50">5 hrs ago</td>
+          </tr>
+          <tr class="border-b border-white/5 hover:bg-white/[0.03] transition-colors duration-300 ease-in-out">
+            <td class="px-5 py-3">INV-0126</td><td class="px-5 py-3">Branded Tape</td><td class="px-5 py-3">0</td>
+            <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full bg-red-500/15 text-red-400 text-[11px]">Reorder</span></td>
+            <td class="px-5 py-3 text-silver/50">1 day ago</td>
+          </tr>
+          <tr class="hover:bg-white/[0.03] transition-colors duration-300 ease-in-out">
+            <td class="px-5 py-3">INV-0127</td><td class="px-5 py-3">Thank-You Cards</td><td class="px-5 py-3">512</td>
+            <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full bg-teal/15 text-teal text-[11px]">In Stock</span></td>
+            <td class="px-5 py-3 text-silver/50">3 days ago</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3 class="font-display text-xl text-white mb-5">Process Workflow</h3>
+  <div class="flex flex-col md:flex-row items-stretch md:items-center gap-2">
+    <div class="lift glass rounded-xl p-4 flex-1 border border-transparent hover:border-teal/40">
+      <p class="font-mono text-[10px] text-teal mb-1">STEP 1</p>
+      <p class="text-sm text-white">Intake</p>
+      <p class="text-xs text-silver/60 mt-1">Requests captured via form</p>
+    </div>
+    <div class="hidden md:flex items-center text-silver/30">→</div>
+    <div class="lift glass rounded-xl p-4 flex-1 border border-transparent hover:border-teal/40">
+      <p class="font-mono text-[10px] text-teal mb-1">STEP 2</p>
+      <p class="text-sm text-white">Validate</p>
+      <p class="text-xs text-silver/60 mt-1">Data checked against rules</p>
+    </div>
+    <div class="hidden md:flex items-center text-silver/30">→</div>
+    <div class="lift glass rounded-xl p-4 flex-1 border border-transparent hover:border-purple/40">
+      <p class="font-mono text-[10px] text-purple mb-1">STEP 3</p>
+      <p class="text-sm text-white">Route</p>
+      <p class="text-xs text-silver/60 mt-1">Assigned to the right team</p>
+    </div>
+    <div class="hidden md:flex items-center text-silver/30">→</div>
+    <div class="lift glass rounded-xl p-4 flex-1 border border-transparent hover:border-purple/40">
+      <p class="font-mono text-[10px] text-purple mb-1">STEP 4</p>
+      <p class="text-sm text-white">Execute</p>
+      <p class="text-xs text-silver/60 mt-1">Task completed &amp; logged</p>
+    </div>
+    <div class="hidden md:flex items-center text-silver/30">→</div>
+    <div class="lift glass rounded-xl p-4 flex-1 border border-transparent hover:border-teal/40">
+      <p class="font-mono text-[10px] text-teal mb-1">STEP 5</p>
+      <p class="text-sm text-white">Audit</p>
+      <p class="text-xs text-silver/60 mt-1">Weekly QA review</p>
+    </div>
+  </div>
+</section>
+
+<section id="panel-pp" class="tab-panel">
+  <header class="mb-10">
+    <p class="font-mono text-xs text-teal mb-2">03 — PP</p>
+    <h2 class="font-display text-3xl md:text-4xl font-semibold text-white">Partnership Marketing</h2>
+    <p class="text-silver/80 mt-2 max-w-xl">Strategic B2B partnership, sponsorship acquisition, and event funding execution.</p>
+    
+    <div class="flex flex-wrap gap-2 mt-5">
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver border border-white/10 bg-white/5">Sponsorship Strategy</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver border border-white/10 bg-white/5">B2B Partnership</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver border border-white/10 bg-white/5">Campaign Execution</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver border border-white/10 bg-white/5">Data Tracking & Reporting</span>
+    </div>
+  </header>
+
+  <div class="mb-12 glass rounded-2xl p-6 border border-white/5 bg-bgSecondary/30">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+      <div>
+        <span class="font-mono text-[10px] bg-purple/15 text-purple px-2 py-0.5 rounded border border-purple/20">Head Of Sponsorship</span>
+        <h3 class="font-display text-xl text-white mt-2 font-medium">Nemesis Exhibition 2025</h3>
+        <p class="text-xs text-silver/60 mt-1">Led the sponsorship division to secure event funding and strategic corporate partnerships.</p>
+      </div>
+      <div class="text-left md:text-right">
+        <p class="font-mono text-xs text-silver/50">August 2025 – September 2025</p>
+        <p class="text-sm font-semibold text-teal mt-1">Realisasi Pendanaan: Rp5.866.000</p>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-4 mt-6">
+      <div class="rounded-xl border border-white/5 bg-bgPrimary/50 p-4 flex flex-col justify-between">
+        <div>
+          <h4 class="text-xs font-mono text-silver/50 mb-2">TRACKER SPONSORSHIP</h4>
+          <p class="text-sm text-white font-medium">Sponsorship Database &amp; Tracking</p>
+          <p class="text-[11px] text-silver/60 mt-1">Lembar kerja rekapitulasi data, pelacakan progres, dan status pencarian mitra.</p>
+        </div>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <a href="https://docs.google.com/spreadsheets/d/1boGNUYhTULdZI5LZo-v8leraQlrjkclV/edit?usp=sharing&ouid=111507872562041592621&rtpof=true&sd=true" target="_blank" class="flex-1 text-center rounded-lg bg-white/5 hover:bg-white/10 py-2 text-xs font-mono text-white border border-white/10 transition-all">Tracker 1 ↗</a>
+          <a href="https://docs.google.com/spreadsheets/d/1JFDqva89rqiFyIPrwxnT38B2ZPKH5HPB/edit?usp=sharing&ouid=111507872562041592621&rtpof=true&sd=true" target="_blank" class="flex-1 text-center rounded-lg bg-white/5 hover:bg-white/10 py-2 text-xs font-mono text-white border border-white/10 transition-all">Tracker 2 ↗</a>
+          <a href="https://docs.google.com/spreadsheets/d/1y6H0gLXiwtsVkJNd1zGscnmgNO8hcT0c/edit?usp=sharing&ouid=111507872562041592621&rtpof=true&sd=true" target="_blank" class="flex-1 text-center rounded-lg bg-white/5 hover:bg-white/10 py-2 text-xs font-mono text-white border border-white/10 transition-all">Tracker 3 ↗</a>
+        </div>
+      </div>
+
+      <div class="rounded-xl border border-white/5 bg-bgPrimary/50 p-4 flex flex-col justify-between">
+        <div>
+          <h4 class="text-xs font-mono text-silver/50 mb-2">PITCH DECK / PROPOSAL</h4>
+          <p class="text-sm text-white font-medium">Sponsorship Deck &amp; B2B Offering</p>
+          <p class="text-[11px] text-silver/60 mt-1">Dokumen penawaran kerja sama visual untuk meyakinkan klien/jenama (via Canva).</p>
+        </div>
+        <div class="mt-5 flex gap-2">
+          <a href="https://canva.link/fo6csoj3kykr94h" target="_blank" class="flex-1 text-center rounded-lg bg-white/5 hover:bg-white/10 py-2 text-xs font-mono text-white border border-white/10 transition-all">Lihat Pitch Deck ↗</a>
+       <a href="https://drive.google.com/file/d/19nXQNmhdVdEFO0Wys_ZdGR6HZFXHIPX-/view?usp=drive_link" target="_blank" class="flex-1 text-center rounded-lg bg-white/5 hover:bg-white/10 py-2 text-xs font-mono text-white border border-white/10 transition-all">Lihat Proposal ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="mt-8 border-t border-white/5 pt-6">
+      <h4 class="text-[10px] font-mono text-silver/60 mb-4 uppercase tracking-wider">Event Proof &amp; Documentation</h4>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/1HnHGTbVjREKeaDJ4p57a3Z8FKT6bfuJg" alt="Nemesis Event Photo 1" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/1A38RoAUlJfIqbbALGOgkYfAQ87fMizyi" alt="Nemesis Event Photo 2" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/1ghr2y6YNvfhAAM40CYqAhggFAHe1zob8" alt="Nemesis Event Photo 3" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/1BCZQwOGo2YSf_ueqhq8AWuUBjid0TSX7" alt="Nemesis Event Photo 4" class="w-full h-full object-cover">
+        </div>
+      </div>
+
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 border-t border-white/10 pt-8">
+      
+      <div class="flex flex-col">
+        <h5 class="text-[10px] font-mono text-silver/60 mb-3 uppercase tracking-wider">Aftermovie Presentation</h5>
+        <div class="aspect-video w-full rounded-xl overflow-hidden border border-white/10 bg-bgPrimary shadow-2xl">
+          <iframe 
+            src="https://drive.google.com/file/d/16hlrw36Shz8eibw687DT5fI1Hz6rnO5Y/preview" 
+            width="100%" 
+            height="100%" 
+            allow="autoplay" 
+            frameborder="0" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <h5 class="text-[10px] font-mono text-silver/60 mb-3 uppercase tracking-wider">Certificate of Appreciation</h5>
+        <div class="aspect-video w-full rounded-xl overflow-hidden border border-white/10 bg-bgPrimary shadow-2xl">
+          <iframe 
+            src="https://drive.google.com/file/d/1RAT8eI4WQK6Sx8gHIY5JaXsAJXGbXVwU/preview" 
+            width="100%" 
+            height="100%" 
+            frameborder="0">
+          </iframe>
+        </div>
+        <p class="text-[9px] text-silver/40 font-mono mt-3 italic text-right">*Officially issued for Nemesis Exhibition 2025 contribution.</p>
+      </div>
+
+    </div>
+
+  <div class="h-px bg-white/5 w-full mb-12"></div>
+
+<div class="mb-12 glass rounded-2xl p-6 border border-white/5 bg-bgSecondary/30">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+      <div>
+        <span class="font-mono text-[10px] bg-teal/15 text-teal px-2 py-0.5 rounded border border-teal/20">Staff Of Sponsorship</span>
+        <h3 class="font-display text-xl text-white mt-2 font-medium">UFOFEST MULA 2025</h3>
+        <p class="text-xs text-silver/60 mt-1">Collaborated in sponsorship acquisition, securing strategic funding and driving partner conversion targets.</p>
+      </div>
+      <div class="text-left md:text-right">
+        <p class="font-mono text-xs text-silver/50">February 2025 – June 2025</p>
+        <p class="text-sm font-semibold text-teal mt-1">Funding Contribution: Rp10.000.000</p>
+      </div>
+    </div>
+
+    <p class="text-xs text-silver/80 mt-2 leading-relaxed">
+      Actively engaged in distributing event proposals to prospective brands and focused on business conversion goals. Successfully met the target of acquiring 85 CIMB Niaga bank accounts, which directly secured IDR 10,000,000 in event funding.
+    </p>
+
+    <div class="grid sm:grid-cols-2 gap-4 mt-6">
+      <div class="rounded-xl border border-white/5 bg-bgPrimary/50 p-4 flex flex-col justify-between">
+        <div>
+          <h4 class="text-xs font-mono text-silver/50 mb-2">SPREADSHEET PROOF</h4>
+          <p class="text-sm text-white font-medium">Sponsorship &amp; User Acquisition Tracker</p>
+          <p class="text-[11px] text-silver/60 mt-1">Recap sheet documenting account registration and audience acquisition progress.</p>
+        </div>
+        <div class="mt-5 flex gap-2">
+          <a href="https://docs.google.com/spreadsheets/d/1yUe8EGj3DkFIssHtWjzk-DFZXC0tP4DP/edit?usp=sharing&ouid=111507872562041592621&rtpof=true&sd=true" target="_blank" class="flex-1 text-center rounded-lg bg-white/5 hover:bg-white/10 py-2 text-xs font-mono text-white border border-white/10 transition-all">View Spreadsheet ↗</a>
+        </div>
+      </div>
+
+      <div class="rounded-xl border border-white/5 bg-bgPrimary/50 p-4 flex flex-col justify-between">
+        <div>
+          <h4 class="text-xs font-mono text-silver/50 mb-2">PROPOSAL</h4>
+          <p class="text-sm text-white font-medium">Event Partnership Proposal</p>
+          <p class="text-[11px] text-silver/60 mt-1">Sponsorship proposal used to pitch the event to potential partners.</p>
+        </div>
+        <div class="mt-5 flex gap-2">
+          <a href="https://drive.google.com/file/d/1Mu1xVdSVVFUo5_MuJcNJI_G9xfjes2d8/view?usp=sharing" target="_blank" class="flex-1 text-center rounded-lg bg-white/5 hover:bg-white/10 py-2 text-xs font-mono text-white border border-white/10 transition-all">View Proposal ↗</a>
+        </div>
+      </div>
+    </div>
+
+  <div class="mt-8 border-t border-white/5 pt-6">
+      <h4 class="text-[10px] font-mono text-silver/60 mb-4 uppercase tracking-wider">Event Proof &amp; Documentation</h4>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/11AMou-29zmpqAiJWfL2ffSIjJhy9Sn1a" alt="UFOFEST Event Photo 1" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/1kNHNmDGMH_cmVaA9jEKwv3muy0vTUNMW" alt="UFOFEST Event Photo 2" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/1ayaaOl_lfxKcYAZ-v2FmfQWQc9plRJhk" alt="UFOFEST Event Photo 3" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/1YTH5euCfjWmPYnzIJSMh7rz4PW4_JMug" alt="UFOFEST Event Photo 4" class="w-full h-full object-cover">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-white/10 pt-6">
+      
+        <div class="flex flex-col">
+          <h5 class="text-[10px] font-mono text-silver/60 mb-3 uppercase tracking-wider">Aftermovie Presentation</h5>
+          <div class="aspect-video w-full rounded-xl overflow-hidden border border-white/10 bg-bgPrimary shadow-2xl">
+            <iframe 
+              src="https://drive.google.com/file/d/1iU18F01vwNhvvnASmDSUh4dr_6riBtwm/preview" 
+              width="100%" 
+              height="100%" 
+              allow="autoplay" 
+              frameborder="0" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <h5 class="text-[10px] font-mono text-silver/60 mb-3 uppercase tracking-wider">Certificate of Appreciation</h5>
+          <div class="aspect-video w-full rounded-xl overflow-hidden border border-white/10 bg-bgPrimary shadow-2xl">
+            <iframe 
+              src="https://drive.google.com/file/d/1bTqVLXMXZy9kLzneipHuc-lrWqUdhc9Y/preview" 
+              width="100%" 
+              height="100%" 
+              frameborder="0">
+            </iframe>
+          </div>
+          <p class="text-[9px] text-silver/40 font-mono mt-3 italic text-right">*Officially issued for UFOFEST MULA 2025 contribution.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </article>
+
+  <div class="mt-8 border-t border-silver/10 pt-6">
+  <h4 class="font-display text-sm font-medium text-ink mb-4">Key Partners / Collaborators</h4>
+  
+  <div class="flex flex-row items-center gap-6">
+    
+    <div class="bg-[#1a2230] p-3 rounded-xl border border-silver/20 opacity-85 hover:opacity-100 hover:scale-105 transition-all duration-300 flex items-center justify-center h-16 w-32 cursor-pointer">
+      <img src="https://lh3.googleusercontent.com/d/1Lr5grei1VcqDw0CXT7lA1pJttgXrPQwp" alt="BTN App" class="h-full w-full object-contain">
+    </div>
+
+    <div class="bg-[#1a2230] p-3 rounded-xl border border-silver/20 opacity-85 hover:opacity-100 hover:scale-105 transition-all duration-300 flex items-center justify-center h-16 w-32 cursor-pointer">
+      <img src="https://lh3.googleusercontent.com/d/1Rv2_iPb29wHVaze1xIOEUUq82JBjh3Of" alt="OCTO Mobile" class="h-full w-full object-contain">
+    </div>
+    </section>
+  
+<section id="panel-ve" class="tab-panel">
+  <header class="mb-10">
+    <p class="font-mono text-xs text-purple mb-2">04 — VE</p>
+    <h2 class="font-display text-3xl md:text-4xl font-semibold text-white">Video Editor</h2>
+    <p class="text-silver/80 mt-2 max-w-xl">Short-form content execution, cinematic pacing, and advanced sound design.</p>
+    <div class="flex flex-wrap gap-2 mt-5">
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Premiere Pro</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">DaVinci Resolve</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Sound Design</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Motion Graphics</span>
+    </div>
+  </header>
+
+  <div class="flex flex-wrap gap-2 mb-6">
+    <button class="video-filter active rounded-full px-4 py-2 text-xs font-mono border border-white/10 text-white bg-white/5 transition-all duration-300 ease-in-out" data-filter="all">All</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="shortform">Short Form</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="promotional">Promotional</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="cinematic">Cinematic</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="gaming">Gaming</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="documentary">Documentary</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="vlog">Vlog</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="mv">Music Video (MV)</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="shortmovie">Short Movie</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="motiongraphic">Motion Graphics</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="aftermovie">Aftermovie</button>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form" data-video-url="https://drive.google.com/file/d/1eLNXumojyBBFNfotPKQhhPhcyiUxSU2F/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple to-bgSecondary thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:18</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Fivelution 2025 Reels</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form Editing - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Cinematic" data-video-url="https://drive.google.com/file/d/1r7ccCFJiHQdZj8g1x9nhWd3amhKUZfjz/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-tr from-teal to-bgSecondary thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:45</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Running Storytelling Reels</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form Editing - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form" data-video-url="https://drive.google.com/file/d/1eJoVzNizM_BOqj4Y1FmkyxHsR9jO6PjZ/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-bl from-purple via-bgSecondary to-teal thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">2:10</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Orientation Bakrie University</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form" data-video-url="https://drive.google.com/file/d/1mvjVbn4-edwLEk3pRwgzUMNN5C2GRvSo/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:22</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Behind The Scene Minecraft Intro</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form" data-video-url="https://drive.google.com/file/d/1XBN__KLDPo-cjjZiUzBbVc3RkKLmyQ08/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-teal to-bgSecondary thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:30</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Montage Vlog Curug</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Vlog" data-video-url="https://drive.google.com/file/d/1LaFFjW4lb8Glzg9wlg-w-9t0CyabKpLM/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">3:42</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Short Vlog Curug Milo</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Vlog" data-video-url="https://drive.google.com/file/d/1aPY03oeBqNhqQOG4Ncg32D7a3Ewq6WSv/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">3:15</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Reels Sains Informasi</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+        <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Cinematic" data-video-url="https://drive.google.com/file/d/1gRvgowmhbIcaAJj1fc0wodI7Yks5ndHD/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:56</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Cinematic Short Tubuh Fokus Jiwa Lost Connection</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+        <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Cinematic, Promotional" data-video-url="https://drive.google.com/file/d/1zU1-x0PE9tEfjA4rb5RLkwah2e-NDKgY/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:33</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Promotion Short Film Tangan Memberi Jiwa Kembali</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+        <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form" data-video-url="https://drive.google.com/file/d/1XBN__KLDPo-cjjZiUzBbVc3RkKLmyQ08/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:31</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Montage Curug Trip</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+        <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Vlog" data-video-url="https://drive.google.com/file/d/15N9YUwMe3C6OyhuC_xz69QYI3I0ZKbSc/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">1:13</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Short Vlog Curug Trip Dorong Angkot</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+        <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Vlog" data-video-url="https://drive.google.com/file/d/1RZ_CKK_fDFmWllNvXZvfMf2ZlczYJmrF/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">1:47</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Short Vlog Konser</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+            <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Vlog" data-video-url="https://drive.google.com/file/d/1kTqHqOJFNPGw0yMaKTpfO-tmW4pI7eHy/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">1:14</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Short Vlog Konser Qorygore</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaming" data-video-url="https://drive.google.com/file/d/1b-FI3s1z0PHFdpydSxdOlER1c_sCp36e/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">1:43</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Clip Streamer</p>
+        <p class="text-xs text-silver/60 mt-1">Gameplay - Meme & Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaming" data-video-url="https://drive.google.com/file/d/1Om-baUCGDmjD0mM_V0TpFLQoevarnskc/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">11:42</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Valorant Funny Moments Part 2</p>
+        <p class="text-xs text-silver/60 mt-1">Gameplay - Meme & Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaming" data-video-url="https://drive.google.com/file/d/1vKXk8rfzal5lbCPyb-DR77bshhK3Js1l/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">12:56</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Minecraft Survival Gameplay 1</p>
+        <p class="text-xs text-silver/60 mt-1">Gameplay - Meme & Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaming" data-video-url="https://drive.google.com/file/d/1klaQQMBcFym1Kp4ssQUVcBvzNYU5-oUO/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">11:56</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Valorant Funny Moments Part 1</p>
+        <p class="text-xs text-silver/60 mt-1">Gameplay - Meme & Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaming" data-video-url="https://drive.google.com/file/d/1Pia2YMAsZ_8cjnY9OnyGXvyvU-B6trXM/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">8:30</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Minecraft Survival Gameplay 2</p>
+        <p class="text-xs text-silver/60 mt-1">Gameplay - Meme & Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaming" data-video-url="https://drive.google.com/file/d/1IGmAC9I5DaBskJinU6XM7tHwt5JgaFYR/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">11:23</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Minecraft Survival Gameplay 3</p>
+        <p class="text-xs text-silver/60 mt-1">Gameplay - Meme & Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaming" data-video-url="https://drive.google.com/file/d/1lDmQ4lZak2K8gZkRKKK7TjX7wblK77U5/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">10:40</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Minecraft Survival Gameplay 4</p>
+        <p class="text-xs text-silver/60 mt-1">Gameplay - Meme & Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Documentary, Short Movie, Cinematic" data-video-url="https://drive.google.com/file/d/1mujo-mFUfO8aK2ya5--6WbVpjnug6Zgq/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">7:03</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Short Film X Dokumenter Dasar Ilmu Sosial</p>
+        <p class="text-xs text-silver/60 mt-1">Documentary & Short Movie - Production Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Documentary, Aftermovie" data-video-url="https://drive.google.com/file/d/1sxb8gsZFFLK10rNtDqSdma3HuwnX3Juy/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">7:57</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Aftermovie PJBL</p>
+        <p class="text-xs text-silver/60 mt-1">Documentary - Production Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Vlog" data-video-url="https://drive.google.com/file/d/1OdcpZNn2yXZg9NyzULQ8k1aX7-4XZtBi/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">10:59</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Animator Vlog 1</p>
+        <p class="text-xs text-silver/60 mt-1">Vlog - Behind The Scene Of An Animator</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Vlog" data-video-url="https://drive.google.com/file/d/1lsC1nxzd6nV_APf_uw6Y5LQcsK-84F9n/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">11:29</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Animator Vlog 2</p>
+        <p class="text-xs text-silver/60 mt-1">Vlog - Behind The Scene Of An Animator</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Vlog" data-video-url="https://drive.google.com/file/d/1YVbwwMEHykE0Ov9Fbf0-YiQ4ZAvDx1lE/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">11:55</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Vlog Bukber MIPA 1 Part 1</p>
+        <p class="text-xs text-silver/60 mt-1">Vlog - Personal & Travel Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Vlog" data-video-url="https://drive.google.com/file/d/1SyEeWacqRwDfZMUy3Whs5fEpZfrgZt3U/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">13:22</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Vlog Bukber MIPA 1 Part 2</p>
+        <p class="text-xs text-silver/60 mt-1">Vlog - Personal & Travel Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Vlog" data-video-url="https://drive.google.com/file/d/1T_oN7UtJi_1X-eIo-rLC5cQ4fZKS98OQ/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:00</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Vlog Content 5</p>
+        <p class="text-xs text-silver/60 mt-1">Vlog - Personal & Travel Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Vlog" data-video-url="https://drive.google.com/file/d/1Yh8Tw384u2hdl67jhwXu1L9sQtMVjK2U/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:00</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Vlog Content 6</p>
+        <p class="text-xs text-silver/60 mt-1">Vlog - Personal & Travel Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Vlog" data-video-url="https://drive.google.com/file/d/1O8oyUETmQHOcP6Oo7jFMtYXDBpyDSve2/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal via-bgSecondary to-purple thumb-zoom"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:00</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Vlog Content 7</p>
+        <p class="text-xs text-silver/60 mt-1">Vlog - Personal & Travel Cut</p>
+      </div>
+    </div>
+    
+  </div>
+  </div>
+</section>
+
+<section id="panel-vg" class="tab-panel">
+  <header class="mb-10">
+    <p class="font-mono text-xs text-teal mb-2">05 — VG</p>
+    <h2 class="font-display text-3xl md:text-4xl font-semibold text-white">Videographer</h2>
+    <p class="text-silver/80 mt-2 max-w-xl">Creative visual capture, event coverage, and asset production.</p>
+    <div class="flex flex-wrap gap-2 mt-5">
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Event Coverage</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Photography</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Color Grading</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Asset Delivery</span>
+    </div>
+  </header>
+
+  <h3 class="font-display text-xl text-white mb-5">Gallery</h3>
+  <div class="columns-2 md:columns-4 gap-3 space-y-3 mb-14">
+    <button class="gallery-item block w-full rounded-xl overflow-hidden break-inside-avoid relative group" style="height:220px" data-caption="Product Launch — Stage B-roll">
+      <div class="absolute inset-0 bg-gradient-to-br from-teal to-bgSecondary thumb-zoom"></div>
+      <div class="absolute inset-0 bg-bgPrimary/0 group-hover:bg-bgPrimary/40 transition-all duration-300 ease-in-out"></div>
+    </button>
+    <button class="gallery-item block w-full rounded-xl overflow-hidden break-inside-avoid relative group" style="height:150px" data-caption="Conference Keynote — Wide Shot">
+      <div class="absolute inset-0 bg-gradient-to-tr from-purple to-bgSecondary thumb-zoom"></div>
+      <div class="absolute inset-0 bg-bgPrimary/0 group-hover:bg-bgPrimary/40 transition-all duration-300 ease-in-out"></div>
+    </button>
+    <button class="gallery-item block w-full rounded-xl overflow-hidden break-inside-avoid relative group" style="height:190px" data-caption="Team Offsite — Candid Series">
+      <div class="absolute inset-0 bg-gradient-to-b from-teal via-bgSecondary to-purple thumb-zoom"></div>
+      <div class="absolute inset-0 bg-bgPrimary/0 group-hover:bg-bgPrimary/40 transition-all duration-300 ease-in-out"></div>
+    </button>
+    <button class="gallery-item block w-full rounded-xl overflow-hidden break-inside-avoid relative group" style="height:260px" data-caption="Studio Shoot — Product Detail">
+      <div class="absolute inset-0 bg-gradient-to-r from-bgSecondary to-purple thumb-zoom"></div>
+      <div class="absolute inset-0 bg-bgPrimary/0 group-hover:bg-bgPrimary/40 transition-all duration-300 ease-in-out"></div>
+    </button>
+    <button class="gallery-item block w-full rounded-xl overflow-hidden break-inside-avoid relative group" style="height:170px" data-caption="Launch Party — Crowd Coverage">
+      <div class="absolute inset-0 bg-gradient-to-tl from-teal to-bgSecondary thumb-zoom"></div>
+      <div class="absolute inset-0 bg-bgPrimary/0 group-hover:bg-bgPrimary/40 transition-all duration-300 ease-in-out"></div>
+    </button>
+    <button class="gallery-item block w-full rounded-xl overflow-hidden break-inside-avoid relative group" style="height:230px" data-caption="On-Location — Golden Hour">
+      <div class="absolute inset-0 bg-gradient-to-br from-purple via-bgSecondary to-teal thumb-zoom"></div>
+      <div class="absolute inset-0 bg-bgPrimary/0 group-hover:bg-bgPrimary/40 transition-all duration-300 ease-in-out"></div>
+    </button>
+    <button class="gallery-item block w-full rounded-xl overflow-hidden break-inside-avoid relative group" style="height:160px" data-caption="Behind the Scenes — Set Build">
+      <div class="absolute inset-0 bg-gradient-to-t from-purple to-bgSecondary thumb-zoom"></div>
+      <div class="absolute inset-0 bg-bgPrimary/0 group-hover:bg-bgPrimary/40 transition-all duration-300 ease-in-out"></div>
+    </button>
+    <button class="gallery-item block w-full rounded-xl overflow-hidden break-inside-avoid relative group" style="height:210px" data-caption="Closing Reception — Detail Shots">
+      <div class="absolute inset-0 bg-gradient-to-bl from-teal to-purple thumb-zoom"></div>
+      <div class="absolute inset-0 bg-bgPrimary/0 group-hover:bg-bgPrimary/40 transition-all duration-300 ease-in-out"></div>
+    </button>
+  </div>
+
+  <h3 class="font-display text-xl text-white mb-5">Event Footage Log</h3>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="lift glass rounded-2xl p-5 border border-transparent hover:border-teal/40">
+      <div class="flex justify-between items-start">
+        <p class="text-white text-sm font-medium">Q2 Product Summit</p>
+        <span class="font-mono text-[10px] text-silver/50">Jun 03, 2026</span>
+      </div>
+      <p class="text-xs text-silver/60 mt-2">Austin, TX · Lead videographer</p>
+      <p class="text-xs text-silver/60 mt-1 font-mono">14 clips delivered · 3 social cutdowns</p>
+    </div>
+    <div class="lift glass rounded-2xl p-5 border border-transparent hover:border-teal/40">
+      <div class="flex justify-between items-start">
+        <p class="text-white text-sm font-medium">Brand Partner Mixer</p>
+        <span class="font-mono text-[10px] text-silver/50">May 19, 2026</span>
+      </div>
+      <p class="text-xs text-silver/60 mt-2">Brooklyn, NY · Second shooter</p>
+      <p class="text-xs text-silver/60 mt-1 font-mono">9 clips delivered · highlight reel</p>
+    </div>
+    <div class="lift glass rounded-2xl p-5 border border-transparent hover:border-teal/40">
+      <div class="flex justify-between items-start">
+        <p class="text-white text-sm font-medium">Internal All-Hands</p>
+        <span class="font-mono text-[10px] text-silver/50">Apr 30, 2026</span>
+      </div>
+      <p class="text-xs text-silver/60 mt-2">Remote / Studio · Sole videographer</p>
+      <p class="text-xs text-silver/60 mt-1 font-mono">Full recording · captioned cutdown</p>
+    </div>
+    <div class="lift glass rounded-2xl p-5 border border-transparent hover:border-teal/40">
+      <div class="flex justify-between items-start">
+        <p class="text-white text-sm font-medium">Campus Recruiting Day</p>
+        <span class="font-mono text-[10px] text-silver/50">Apr 11, 2026</span>
+      </div>
+      <p class="text-xs text-silver/60 mt-2">Berkeley, CA · Lead videographer</p>
+      <p class="text-xs text-silver/60 mt-1 font-mono">22 interview clips · recap reel</p>
+    </div>
+  </div>
+</section>
+
+<section id="panel-ux" class="tab-panel">
+  <header class="mb-10">
+    <p class="font-mono text-xs text-purple mb-2">06 — UX</p>
+    <h2 class="font-display text-3xl md:text-4xl font-semibold text-white">UI/UX Designer</h2>
+    <p class="text-silver/80 mt-2 max-w-xl">User-centered design methodologies and intuitive interface building.</p>
+    <div class="flex flex-wrap gap-2 mt-5">
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">User Research</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Wireframing</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Prototyping</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Usability Testing</span>
+    </div>
+  </header>
+
+  <h3 class="font-display text-xl text-white mb-5">Case Study — Onboarding Redesign</h3>
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-14">
+    <div class="lift glass rounded-2xl p-4 text-center border border-transparent hover:border-purple/40">
+      <div class="w-9 h-9 mx-auto rounded-full bg-purple/15 text-purple flex items-center justify-center font-mono text-xs mb-2">EM</div>
+      <p class="text-xs text-white">Empathize</p>
+      <p class="text-[11px] text-silver/60 mt-1">12 user interviews</p>
+    </div>
+    <div class="lift glass rounded-2xl p-4 text-center border border-transparent hover:border-purple/40">
+      <div class="w-9 h-9 mx-auto rounded-full bg-purple/15 text-purple flex items-center justify-center font-mono text-xs mb-2">DF</div>
+      <p class="text-xs text-white">Define</p>
+      <p class="text-[11px] text-silver/60 mt-1">3 problem statements</p>
+    </div>
+    <div class="lift glass rounded-2xl p-4 text-center border border-transparent hover:border-purple/40">
+      <div class="w-9 h-9 mx-auto rounded-full bg-purple/15 text-purple flex items-center justify-center font-mono text-xs mb-2">ID</div>
+      <p class="text-xs text-white">Ideate</p>
+      <p class="text-[11px] text-silver/60 mt-1">40+ sketched concepts</p>
+    </div>
+    <div class="lift glass rounded-2xl p-4 text-center border border-transparent hover:border-purple/40">
+      <div class="w-9 h-9 mx-auto rounded-full bg-purple/15 text-purple flex items-center justify-center font-mono text-xs mb-2">PR</div>
+      <p class="text-xs text-white">Prototype</p>
+      <p class="text-[11px] text-silver/60 mt-1">High-fidelity Figma</p>
+    </div>
+    <div class="lift glass rounded-2xl p-4 text-center border border-transparent hover:border-purple/40">
+      <div class="w-9 h-9 mx-auto rounded-full bg-purple/15 text-purple flex items-center justify-center font-mono text-xs mb-2">TS</div>
+      <p class="text-xs text-white">Test</p>
+      <p class="text-[11px] text-silver/60 mt-1">8 usability sessions</p>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 mb-14">
+    <div>
+      <h3 class="font-display text-xl text-white mb-5">Affinity Diagram</h3>
+      <div class="glass rounded-2xl p-5 border border-white/5">
+        <p class="font-mono text-[10px] text-teal mb-2">CLUSTER — ONBOARDING FRICTION</p>
+        <div class="grid grid-cols-3 gap-2 mb-4">
+          <div class="rounded-lg bg-teal/15 text-teal text-[11px] p-2 font-mono">Too many steps</div>
+          <div class="rounded-lg bg-teal/15 text-teal text-[11px] p-2 font-mono">Form fatigue</div>
+          <div class="rounded-lg bg-teal/10 text-teal text-[11px] p-2 font-mono">No progress cue</div>
+        </div>
+        <p class="font-mono text-[10px] text-purple mb-2">CLUSTER — TRUST SIGNALS</p>
+        <div class="grid grid-cols-3 gap-2">
+          <div class="rounded-lg bg-purple/15 text-purple text-[11px] p-2 font-mono">Unclear pricing</div>
+          <div class="rounded-lg bg-purple/15 text-purple text-[11px] p-2 font-mono">No social proof</div>
+          <div class="rounded-lg bg-purple/10 text-purple text-[11px] p-2 font-mono">Vague permissions</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="font-display text-xl text-white mb-5">Crazy 8s — Rapid Concepts</h3>
+      <div class="grid grid-cols-4 gap-2">
+        <div class="lift glass rounded-lg aspect-square flex flex-col items-center justify-center border border-white/5"><span class="font-mono text-[10px] text-silver/50">01</span><div class="w-6 h-px bg-silver/30 my-1"></div></div>
+        <div class="lift glass rounded-lg aspect-square flex flex-col items-center justify-center border border-white/5"><span class="font-mono text-[10px] text-silver/50">02</span><div class="w-6 h-px bg-silver/30 my-1"></div></div>
+        <div class="lift glass rounded-lg aspect-square flex flex-col items-center justify-center border border-white/5"><span class="font-mono text-[10px] text-silver/50">03</span><div class="w-6 h-px bg-silver/30 my-1"></div></div>
+        <div class="lift glass rounded-lg aspect-square flex flex-col items-center justify-center border border-white/5"><span class="font-mono text-[10px] text-silver/50">04</span><div class="w-6 h-px bg-silver/30 my-1"></div></div>
+        <div class="lift glass rounded-lg aspect-square flex flex-col items-center justify-center border border-white/5"><span class="font-mono text-[10px] text-silver/50">05</span><div class="w-6 h-px bg-silver/30 my-1"></div></div>
+        <div class="lift glass rounded-lg aspect-square flex flex-col items-center justify-center border border-white/5"><span class="font-mono text-[10px] text-silver/50">06</span><div class="w-6 h-px bg-silver/30 my-1"></div></div>
+        <div class="lift glass rounded-lg aspect-square flex flex-col items-center justify-center border border-white/5"><span class="font-mono text-[10px] text-silver/50">07</span><div class="w-6 h-px bg-silver/30 my-1"></div></div>
+        <div class="lift glass rounded-lg aspect-square flex flex-col items-center justify-center border border-white/5"><span class="font-mono text-[10px] text-silver/50">08</span><div class="w-6 h-px bg-silver/30 my-1"></div></div>
+      </div>
+      <p class="text-[11px] text-silver/50 mt-2 font-mono">8 concepts, 8 minutes — fastest idea won.</p>
+    </div>
+  </div>
+
+  <h3 class="font-display text-xl text-white mb-5">Interactive Prototype</h3>
+  <div class="glass rounded-2xl border border-white/5 overflow-hidden max-w-xl">
+    <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5">
+      <span class="w-2.5 h-2.5 rounded-full bg-red-400/70"></span>
+      <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/70"></span>
+      <span class="w-2.5 h-2.5 rounded-full bg-teal/70"></span>
+      <span class="font-mono text-[11px] text-silver/50 ml-3 truncate">figma.com/proto/onboarding-redesign</span>
+    </div>
+    <div class="p-6 flex items-center justify-center bg-gradient-to-br from-bgSecondary to-bgPrimary">
+      <div class="w-40 rounded-2xl border-2 border-white/10 p-3 bg-bgPrimary/60">
+        <div class="h-2 w-10 rounded-full bg-white/10 mx-auto mb-4"></div>
+        <div class="h-20 rounded-lg bg-gradient-to-br from-teal/40 to-purple/40 mb-3"></div>
+        <div class="h-2 rounded bg-white/15 mb-2"></div>
+        <div class="h-2 rounded bg-white/10 w-2/3 mb-4"></div>
+        <div class="h-7 rounded-full bg-gradient-to-r from-teal to-purple"></div>
+      </div>
+    </div>
+    <div class="px-5 py-4 border-t border-white/5 flex items-center justify-between">
+      <p class="text-xs text-silver/60">Click-through prototype, 14 frames</p>
+      <a href="#" class="rounded-full bg-white/5 hover:bg-white/10 px-4 py-2 text-xs font-mono text-white transition-all duration-300 ease-in-out border border-white/10">Open Prototype ↗</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div id="lightbox" class="fixed inset-0 z-50 lightbox-bg hidden items-center justify-center p-6">
+  <button id="lightboxClose" class="absolute top-6 right-6 text-white/70 hover:text-white text-2xl leading-none transition-colors duration-300 ease-in-out" aria-label="Close">&times;</button>
+  <div class="max-w-2xl w-full">
+    <div id="lightboxImg" class="w-full h-72 md:h-96 rounded-2xl bg-gradient-to-br from-teal to-purple"></div>
+    <p id="lightboxCaption" class="text-center text-silver mt-4 text-sm font-mono"></p>
+  </div>
+</div>
+
+<div id="videoLightbox" class="fixed inset-0 z-50 lightbox-bg hidden items-center justify-center p-4 md:p-8">
+  <button id="videoLightboxClose" class="absolute top-6 right-6 text-white/70 hover:text-white text-3xl leading-none transition-colors duration-300 ease-in-out" aria-label="Close">&times;</button>
+  <div class="w-full max-w-4xl aspect-video bg-black/80 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(138,43,226,0.15)] relative border border-white/10">
+    <iframe id="videoIframe" class="w-full h-full" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+</div>
+
+<footer id="contact" class="border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-14 flex flex-col md:flex-row md:items-end justify-between gap-8">
+    <div>
+      <p class="font-mono text-xs text-teal mb-3">LET'S TALK</p>
+      <h3 class="font-display text-3xl md:text-4xl text-white font-semibold max-w-md">Got a role in mind?<br>I'd love to hear about it.</h3>
+      <a href="mailto:hello@avakim.dev" class="inline-block mt-5 text-silver hover:text-white border-b border-teal/40 hover:border-teal transition-colors duration-300 ease-in-out">hello@avakim.dev</a>
+    </div>
+    <div class="flex gap-3">
+      <a href="#" class="tag-pill rounded-full px-4 py-2 text-xs font-mono text-silver">LinkedIn</a>
+      <a href="#" class="tag-pill rounded-full px-4 py-2 text-xs font-mono text-silver">Instagram</a>
+      <a href="#" class="tag-pill rounded-full px-4 py-2 text-xs font-mono text-silver">Behance</a>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 md:px-8 pb-8">
+    <p class="text-xs text-silver/40 font-mono">© 2026 Andhika Aidan Gibran. Built with care, one discipline at a time.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------------- Tab switching ---------------- */
+  var navBtns = document.querySelectorAll('.nav-btn');
+  var panels = document.querySelectorAll('.tab-panel');
+
+  function activateTab(tab){
+    navBtns.forEach(function(b){ b.classList.toggle('active', b.dataset.tab === tab); });
+    panels.forEach(function(p){ p.classList.toggle('active', p.id === 'panel-' + tab); });
+    var activeBtn = document.querySelector('.nav-btn[data-tab="' + tab + '"]');
+    if(activeBtn){
+      activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  }
+
+  navBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){ activateTab(btn.dataset.tab); });
+  });
+
+  /* ---------------- Typewriter hero ---------------- */
+  var roles = [
+    'Social Media',
+    'Traffic & Operation',
+    'Partnership Marketing',
+    'Video Editor',
+    'Videographer',
+    'UI/UX Designer'
+  ];
+  var twEl = document.getElementById('typewriter');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if(reduceMotion){
+    twEl.textContent = roles[0];
+  } else {
+    var ri = 0, ci = 0, deleting = false;
+    function tick(){
+      var word = roles[ri];
+      if(!deleting){
+        ci++;
+        twEl.textContent = word.slice(0, ci);
+        if(ci === word.length){
+          deleting = true;
+          setTimeout(tick, 1400);
+          return;
+        }
+      } else {
+        ci--;
+        twEl.textContent = word.slice(0, ci);
+        if(ci === 0){
+          deleting = false;
+          ri = (ri + 1) % roles.length;
+        }
+      }
+      setTimeout(tick, deleting ? 35 : 65);
+    }
+    tick();
+  }
+
+  /* ---------------- Animated counters ---------------- */
+  var counters = document.querySelectorAll('.counter');
+  var counterObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(function(c){ counterObserver.observe(c); });
+
+  function animateCounter(el){
+    var target = parseFloat(el.dataset.target);
+    var decimals = parseInt(el.dataset.decimal || '0', 10);
+    var suffix = el.dataset.suffix || '';
+    var duration = 1400;
+    var start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var value = target * eased;
+      el.textContent = value.toFixed(decimals) + suffix;
+      if(progress < 1) requestAnimationFrame(step);
+      else el.textContent = target.toFixed(decimals) + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ---------------- Progress bars ---------------- */
+  var bars = document.querySelectorAll('.progress-fill');
+  var barObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var target = entry.target;
+        requestAnimationFrame(function(){
+          target.style.width = target.dataset.progress + '%';
+        });
+        barObserver.unobserve(target);
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(function(b){ barObserver.observe(b); });
+
+/* ---------------- Video Filter (Multi-Category Support) ---------------- */
+  var videoFilters = document.querySelectorAll('.video-filter');
+  var videoCards = document.querySelectorAll('.video-card');
+
+  if (videoFilters.length > 0) {
+    videoFilters.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        
+        // 1. Pindahkan class aktif (Border & Background) ke tombol yang diklik
+        videoFilters.forEach(function(filterBtn) {
+          filterBtn.classList.remove('active', 'border-white/10', 'bg-white/5', 'text-white');
+          filterBtn.classList.add('border-transparent', 'text-silver/60');
+        });
+
+        btn.classList.add('active', 'border-white/10', 'bg-white/5', 'text-white');
+        btn.classList.remove('border-transparent', 'text-silver/60');
+
+        // 2. Logika filter kartu video (Mendukung Banyak Kategori)
+        var filterValue = btn.dataset.filter ? btn.dataset.filter.toLowerCase().replace(/[^a-z0-9]/g, '') : '';
+        
+        videoCards.forEach(function(card) {
+          // Ambil teks kategori, lalu pecah berdasarkan koma (,) menjadi sebuah list/array
+          var rawCategories = card.dataset.category ? card.dataset.category.split(',') : [];
+          
+          // Bersihkan setiap kategori di dalam list dari spasi dan huruf kapital
+          var cleanCategories = rawCategories.map(function(cat) {
+            return cat.trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+          });
+          
+          // Cek jika memilih 'all' ATAU kategori tombol yang diklik ada di dalam list kategori video
+          if (btn.dataset.filter === 'all' || cleanCategories.includes(filterValue)) {
+            card.style.display = ''; // Tampilkan
+          } else {
+            card.style.display = 'none'; // Sembunyikan
+          }
+        });
+
+      });
+    });
+  }
+
+  /* ---------------- Image Lightbox (Asli) ---------------- */
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCaption = document.getElementById('lightboxCaption');
+  var lightboxClose = document.getElementById('lightboxClose');
+
+  document.querySelectorAll('.gallery-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      var bgClasses = Array.from(item.firstElementChild.classList).filter(function(c){
+        return c.indexOf('bg-gradient') === 0 || c.indexOf('from-') === 0 || c.indexOf('via-') === 0 || c.indexOf('to-') === 0;
+      });
+      lightboxImg.className = 'w-full h-72 md:h-96 rounded-2xl ' + bgClasses.join(' ');
+      lightboxCaption.textContent = item.dataset.caption;
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox(){
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+  if(lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if(lightbox) lightbox.addEventListener('click', function(e){ if(e.target === lightbox) closeLightbox(); });
+
+  /* ---------------- Video Lightbox (Baru) ---------------- */
+  var videoLightbox = document.getElementById('videoLightbox');
+  var videoIframe = document.getElementById('videoIframe');
+  var videoLightboxClose = document.getElementById('videoLightboxClose');
+
+  document.querySelectorAll('.video-card[data-video-url]').forEach(function(card){
+    card.addEventListener('click', function(){
+      var url = card.dataset.videoUrl;
+      if(url) {
+        videoIframe.src = url;
+        videoLightbox.classList.remove('hidden');
+        videoLightbox.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  function closeVideoLightbox(){
+    videoLightbox.classList.add('hidden');
+    videoLightbox.classList.remove('flex');
+    videoIframe.src = ''; /* Menghapus source iframe akan menghentikan video */
+    document.body.style.overflow = '';
+  }
+  if(videoLightboxClose) videoLightboxClose.addEventListener('click', closeVideoLightbox);
+  if(videoLightbox) videoLightbox.addEventListener('click', function(e){ if(e.target === videoLightbox) closeVideoLightbox(); });
+
+  /* ---------------- Universal Escape Key ---------------- */
+  document.addEventListener('keydown', function(e){ 
+    if(e.key === 'Escape') { 
+      closeLightbox(); 
+      closeVideoLightbox(); 
+    } 
+  });
+
+})();
+</script>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar{ display: none; }
+</style>
+
+</body>
+</html>
